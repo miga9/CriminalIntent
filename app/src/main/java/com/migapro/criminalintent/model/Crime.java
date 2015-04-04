@@ -8,9 +8,6 @@ import org.json.JSONObject;
 import java.util.Date;
 import java.util.UUID;
 
-/**
- * Created by Miga on 12/26/2014.
- */
 public class Crime {
 
     private static final String JSON_ID = "id";

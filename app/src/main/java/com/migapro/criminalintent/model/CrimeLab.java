@@ -8,9 +8,6 @@ import com.migapro.criminalintent.CriminalIntentJSONSerializer;
 import java.util.ArrayList;
 import java.util.UUID;
 
-/**
- * Created by MiguelK on 12/26/2014.
- */
 public class CrimeLab {
 
     private static final String TAG = "CrimeLab";

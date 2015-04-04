@@ -25,9 +25,6 @@ import com.migapro.criminalintent.model.CrimeLab;
 import java.util.Date;
 import java.util.UUID;
 
-/**
- * Created by Miga on 12/26/2014.
- */
 public class CrimeFragment extends Fragment {
     public static final String EXTRA_CRIME_ID = "com.migapro.criminalintent.crime_id";
 

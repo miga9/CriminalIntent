@@ -20,9 +20,6 @@ import com.migapro.criminalintent.model.CrimeLab;
 
 import java.util.ArrayList;
 
-/**
- * Created by Miga on 12/26/2014.
- */
 public class CrimeListFragment extends ListFragment {
     private ArrayList<Crime> mCrimes;
     private boolean mSubtitleVisible;

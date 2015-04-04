@@ -14,9 +14,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-/**
- * Created by Miga on 12/27/2014.
- */
 public class DatePickerFragment extends DialogFragment {
     public static final String EXTRA_DATE = "com.migapro.criminalintent.date";
 

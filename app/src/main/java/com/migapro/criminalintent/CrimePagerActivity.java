@@ -13,9 +13,6 @@ import com.migapro.criminalintent.model.CrimeLab;
 import java.util.ArrayList;
 import java.util.UUID;
 
-/**
- * Created by Miga on 12/27/2014.
- */
 public class CrimePagerActivity extends ActionBarActivity {
     private ViewPager mViewPager;
     private ArrayList<Crime> mCrimes;
