@@ -1,9 +1,11 @@
-package com.migapro.criminalintent;
+package com.migapro.criminalintent.ui;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+
+import com.migapro.criminalintent.R;
 
 public abstract class SingleFragmentActivity extends ActionBarActivity {
     protected abstract Fragment createFragment();

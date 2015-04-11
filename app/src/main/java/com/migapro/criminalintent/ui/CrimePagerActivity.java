@@ -1,4 +1,4 @@
-package com.migapro.criminalintent;
+package com.migapro.criminalintent.ui;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -7,6 +7,7 @@ import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 
+import com.migapro.criminalintent.R;
 import com.migapro.criminalintent.model.Crime;
 import com.migapro.criminalintent.model.CrimeLab;
 

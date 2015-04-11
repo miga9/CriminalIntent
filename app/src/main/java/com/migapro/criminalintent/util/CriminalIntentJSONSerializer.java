@@ -1,4 +1,4 @@
-package com.migapro.criminalintent;
+package com.migapro.criminalintent.util;
 
 import android.content.Context;
 

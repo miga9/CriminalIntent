@@ -1,4 +1,4 @@
-package com.migapro.criminalintent;
+package com.migapro.criminalintent.ui;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -21,6 +21,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.migapro.criminalintent.R;
 import com.migapro.criminalintent.model.Crime;
 import com.migapro.criminalintent.model.CrimeLab;
 
@@ -31,7 +32,8 @@ public class CrimeFragment extends Fragment {
     public static final String EXTRA_CRIME_ID = "com.migapro.criminalintent.crime_id";
 
     private static final String DIALOG_DATE = "date";
-    private static final int REQUEST_CODE = 0;
+    private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_PHOTO = 1;
 
     private Crime mCrime;
     private EditText mTitleField;
@@ -92,7 +94,7 @@ public class CrimeFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getFragmentManager();
                 DatePickerFragment dialogFragment = DatePickerFragment.newInstance(mCrime.getDate());
-                dialogFragment.setTargetFragment(CrimeFragment.this, REQUEST_CODE);
+                dialogFragment.setTargetFragment(CrimeFragment.this, REQUEST_DATE);
                 dialogFragment.show(fm, DIALOG_DATE);
             }
         });
@@ -111,7 +113,7 @@ public class CrimeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), CrimeCameraActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_PHOTO);
             }
         });
         PackageManager packageManager = getActivity().getPackageManager();
@@ -148,10 +150,15 @@ public class CrimeFragment extends Fragment {
             return ;
         }
 
-        if (requestCode == REQUEST_CODE) {
+        if (requestCode == REQUEST_DATE) {
             Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
             updateDate();
+        } else if (requestCode == REQUEST_PHOTO) {
+            String filename = data.getStringExtra(CrimeCameraFragment.EXTRA_PHOTO_FILENAME);
+            if (filename != null) {
+                // Successfully obtained filename
+            }
         }
     }
 

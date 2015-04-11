@@ -1,4 +1,4 @@
-package com.migapro.criminalintent;
+package com.migapro.criminalintent.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+
+import com.migapro.criminalintent.R;
 
 import java.util.Calendar;
 import java.util.Date;

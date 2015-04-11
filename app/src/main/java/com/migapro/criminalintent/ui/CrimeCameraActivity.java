@@ -1,4 +1,4 @@
-package com.migapro.criminalintent;
+package com.migapro.criminalintent.ui;
 
 import android.app.Fragment;
 

@@ -3,7 +3,7 @@ package com.migapro.criminalintent.model;
 import android.content.Context;
 import android.util.Log;
 
-import com.migapro.criminalintent.CriminalIntentJSONSerializer;
+import com.migapro.criminalintent.util.CriminalIntentJSONSerializer;
 
 import java.util.ArrayList;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package com.migapro.criminalintent;
+package com.migapro.criminalintent.ui;
 
 import android.app.ListFragment;
 import android.content.Intent;
@@ -20,6 +20,7 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.migapro.criminalintent.R;
 import com.migapro.criminalintent.model.Crime;
 import com.migapro.criminalintent.model.CrimeLab;
 
