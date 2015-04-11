@@ -1,6 +1,7 @@
 package com.migapro.criminalintent;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 public class CrimeCameraFragment extends Fragment {
 
@@ -21,6 +24,46 @@ public class CrimeCameraFragment extends Fragment {
 
     private Camera mCamera;
     private SurfaceView mSurfaceView;
+    private View mProgressContainer;
+
+    private Camera.ShutterCallback mShutterCallback = new Camera.ShutterCallback() {
+        @Override
+        public void onShutter() {
+            mProgressContainer.setVisibility(View.VISIBLE);
+        }
+    };
+
+    private Camera.PictureCallback mJpegCallback = new Camera.PictureCallback() {
+
+        @Override
+        public void onPictureTaken(byte[] data, Camera camera) {
+            // Create a filename
+            String filename = UUID.randomUUID().toString() + ".jpg";
+            // Save the jpeg data to disk
+            FileOutputStream fileOutputStream = null;
+            boolean success = true;
+
+            try {
+                fileOutputStream = getActivity().openFileOutput(filename, Context.MODE_PRIVATE);
+                fileOutputStream.write(data);
+            } catch (IOException exception) {
+                success = false;
+            } finally {
+                try {
+                    if (fileOutputStream != null) {
+                        fileOutputStream.close();
+                    }
+                } catch (IOException exception) {
+                    success = false;
+                }
+            }
+
+            if (success) {
+                Log.d(TAG, filename + " saved");
+            }
+            getActivity().finish();
+        }
+    };
 
     @Nullable
     @Override
@@ -31,7 +74,9 @@ public class CrimeCameraFragment extends Fragment {
         takePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().finish();
+                if (mCamera != null) {
+                    mCamera.takePicture(mShutterCallback, null, mJpegCallback);
+                }
             }
         });
 
@@ -60,6 +105,10 @@ public class CrimeCameraFragment extends Fragment {
                 Camera.Size size = getBestSupportedSize(parameters.getSupportedPreviewSizes(), width, height);
                 parameters.setPreviewSize(size.width, size.height);
                 mCamera.setParameters(parameters);
+
+                size = getBestSupportedSize(parameters.getSupportedPreviewSizes(), width, height);
+                mCamera.setParameters(parameters);
+
                 try {
                     mCamera.startPreview();
                 } catch (Exception exception) {
@@ -76,6 +125,9 @@ public class CrimeCameraFragment extends Fragment {
                 }
             }
         });
+
+        mProgressContainer = root.findViewById(R.id.crime_camera_progressContainer);
+        mProgressContainer.setVisibility(View.INVISIBLE);
 
         return root;
     }

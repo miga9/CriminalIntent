@@ -44,7 +44,8 @@ public class CriminalIntentJSONSerializer {
             }
 
             // Parse the JSON using JSONTokener
-            JSONArray jsonArray = (JSONArray) new JSONTokener(jsonString.toString()).nextValue();
+            String jsonStr = jsonString.toString();
+            JSONArray jsonArray = (JSONArray) new JSONTokener(jsonStr).nextValue();
             // Build the array of crimes from JSONObjects
             for (int i = 0; i < jsonArray.length(); i++) {
                 crimes.add(new Crime(jsonArray.getJSONObject(i)));
