@@ -152,7 +152,7 @@ public class CrimeListFragment extends ListFragment {
             case R.id.menu_item_new_crime:
                 Crime crime = new Crime();
                 CrimeLab.get(getActivity()).addCrime(crime);
-                
+
                 ((CrimeAdapter) getListAdapter()).notifyDataSetChanged();
                 mCallbacks.onCrimeSelected(crime);
 
@@ -195,6 +195,10 @@ public class CrimeListFragment extends ListFragment {
         }
 
         return super.onContextItemSelected(item);
+    }
+
+    public void updateUI() {
+        ((CrimeAdapter) getListAdapter()).notifyDataSetChanged();
     }
 
     private class CrimeAdapter extends ArrayAdapter<Crime> {

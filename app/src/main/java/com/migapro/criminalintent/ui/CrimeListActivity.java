@@ -8,7 +8,8 @@ import android.content.Intent;
 import com.migapro.criminalintent.R;
 import com.migapro.criminalintent.model.Crime;
 
-public class CrimeListActivity extends SingleFragmentActivity implements CrimeListFragment.Callbacks {
+public class CrimeListActivity extends SingleFragmentActivity
+        implements CrimeListFragment.Callbacks, CrimeFragment.Callbacks {
 
     @Override
     protected Fragment createFragment() {
@@ -42,5 +43,12 @@ public class CrimeListActivity extends SingleFragmentActivity implements CrimeLi
             ft.add(R.id.detailFragmentContainer, newDetailFragment);
             ft.commit();
         }
+    }
+
+    @Override
+    public void onCrimeUpdate(Crime crime) {
+        FragmentManager fm = getFragmentManager();
+        CrimeListFragment listFragment = (CrimeListFragment) fm.findFragmentById(R.id.fragmentContainer);
+        listFragment.updateUI();
     }
 }
