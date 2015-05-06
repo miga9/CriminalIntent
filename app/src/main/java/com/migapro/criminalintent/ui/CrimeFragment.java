@@ -250,11 +250,13 @@ public class CrimeFragment extends Fragment {
             Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
             updateDate();
+            mCallbacks.onCrimeUpdate(mCrime);
         } else if (requestCode == REQUEST_PHOTO) {
             String filename = data.getStringExtra(CrimeCameraFragment.EXTRA_PHOTO_FILENAME);
             if (filename != null) {
                 Photo photo = new Photo(filename);
                 mCrime.setPhoto(photo);
+                mCallbacks.onCrimeUpdate(mCrime);
                 showPhoto();
             }
         } else if (requestCode == REQUEST_CONTACT) {
@@ -279,6 +281,7 @@ public class CrimeFragment extends Fragment {
             cursor.moveToFirst();
             String suspect = cursor.getString(0);
             mCrime.setSuspect(suspect);
+            mCallbacks.onCrimeUpdate(mCrime);
             mSuspectButton.setText(suspect);
             cursor.close();
         }

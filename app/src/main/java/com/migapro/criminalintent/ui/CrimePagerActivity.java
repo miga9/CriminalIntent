@@ -14,7 +14,7 @@ import com.migapro.criminalintent.model.CrimeLab;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class CrimePagerActivity extends ActionBarActivity {
+public class CrimePagerActivity extends ActionBarActivity implements CrimeFragment.Callbacks {
     private ViewPager mViewPager;
     private ArrayList<Crime> mCrimes;
 
@@ -68,5 +68,10 @@ public class CrimePagerActivity extends ActionBarActivity {
                 break;
             }
         }
+    }
+
+    @Override
+    public void onCrimeUpdate(Crime crime) {
+        
     }
 }
