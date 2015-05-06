@@ -72,6 +72,6 @@ public class CrimePagerActivity extends ActionBarActivity implements CrimeFragme
 
     @Override
     public void onCrimeUpdate(Crime crime) {
-        
+
     }
 }
